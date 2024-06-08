@@ -17,10 +17,10 @@ export async function POST(req: Request) {
     subject: 'Nuevo Contacto Luxcare',
     html: `
     <h1>Alguien ha solicitado contactar en Luxcare</h1>
-    ${body.name ? ` <p style="font-size: 22px;">Nombre</p> <p>${body.name}</p> <br/> ` : ``}
-    ${body.email ? ` <p style="font-size: 22px;">Email</p> <p>${body.email}</p> <br/> ` : ``}
-    ${body.phone ? ` <p style="font-size: 22px;">Teléfono</p> <p>${body.phone}</p> <br/> ` : ``}
-    ${body.question ? ` <p style="font-size: 22px;">Asunto</p> <p>${body.question}</p> <br/> ` : ``}
+    ${body.name ? ` <p style="font-size: 22px;">Nombre</p> <p>${body.name}</p>` : ``}
+    ${body.email ? ` <p style="font-size: 22px;">Email</p> <p>${body.email}</p>` : ``}
+    ${body.phone ? ` <p style="font-size: 22px;">Teléfono</p> <p>${body.phone}</p>` : ``}
+    ${body.question ? ` <p style="font-size: 22px;">Asunto</p> <p>${body.question}</p>` : ``}
     `
   });
   return new Response(JSON.stringify({ msg: 'todo bien' }));
