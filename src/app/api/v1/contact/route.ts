@@ -22,9 +22,14 @@ export async function POST(req: Request) {
     ${body.phone ? ` <h2>Teléfono</h2> <p>${body.phone}</p> <br/> ` : ``}
     ${body.question ? ` <h2>Asunto</h2> <p>${body.question}</p> <br/> ` : ``}
     `
+  }).then(data => {
+    console.log('Sent');
+    console.log(data);
   }).catch(error => {
     console.log('Error sending mail:');
     console.log(error);
+  }).finally(() => {
+    console.log('Finally sent');
   });
 
   return new Response(JSON.stringify({ msg: 'todo bien' }));
