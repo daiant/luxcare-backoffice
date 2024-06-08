@@ -10,6 +10,7 @@ export async function POST(req: Request) {
 
   await sql`INSERT INTO customer_contacts (name, email, phone, comments) VALUES (${body.name}, ${body.email}, ${body.phone}, ${body.question});`;
 
+  console.log('Sending contact mail...');
   mailer.sendMail({
     from: 'web@luxcare.es',
     to: 'cmg2512@gmail.com',
@@ -21,6 +22,9 @@ export async function POST(req: Request) {
     ${body.phone ? ` <h2>Teléfono</h2> <p>${body.phone}</p> <br/> ` : ``}
     ${body.question ? ` <h2>Asunto</h2> <p>${body.question}</p> <br/> ` : ``}
     `
+  }).catch(error => {
+    console.log('Error sending mail:');
+    console.log(error);
   });
 
   return new Response(JSON.stringify({ msg: 'todo bien' }));
